@@ -42,6 +42,8 @@ Conversation management endpoints are available under `/conversations`: `POST` a
 pytest
 ```
 
+The same checks can be run with `.\scripts\verify.ps1` from an activated virtual environment.
+
 ## Architecture
 
 - `app/api`: HTTP routes and request/response concerns
@@ -51,3 +53,5 @@ pytest
 - `app/ai`: AI provider integrations
 - `app/config.py`: environment-backed settings
 - `app/main.py`: application composition and entry point
+
+More detail is available in [docs/architecture.md](docs/architecture.md), [docs/api.md](docs/api.md), and [docs/troubleshooting.md](docs/troubleshooting.md).
