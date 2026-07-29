@@ -1,5 +1,5 @@
 """AI provider abstraction layer."""
 
-from app.ai.gemini import GeminiService, GeminiServiceError
+from app.ai.groq import GroqService, GroqServiceError
 
-__all__ = ["GeminiService", "GeminiServiceError"]
+__all__ = ["GroqService", "GroqServiceError"]

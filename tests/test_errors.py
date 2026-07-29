@@ -8,4 +8,4 @@ def test_validation_errors_are_safe_and_meaningful() -> None:
 
     assert response.status_code == 422
     assert response.json()["detail"] == "Request validation failed"
-    assert "GEMINI_API_KEY" not in response.text
+    assert "GROQ_API_KEY" not in response.text

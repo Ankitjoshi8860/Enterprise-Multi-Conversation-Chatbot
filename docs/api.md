@@ -21,7 +21,7 @@ Start the server with `uvicorn app.main:app --reload`; interactive OpenAPI docum
 1. Validates the message.
 2. Loads only the selected conversation.
 3. Stores the user message.
-4. Sends the complete selected history to Gemini.
+4. Sends the complete selected history to GroqCloud.
 5. Stores and returns the assistant response.
 
 Missing conversations return `404`, invalid requests return `422`, and provider failures return `502` without exposing credentials.

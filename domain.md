@@ -2,172 +2,154 @@
 
 ## Project Name
 
-**MediAssist AI**
+MediAssist AI
 
 ---
 
-# Overview
+## Overview
 
-MediAssist AI is an intelligent healthcare chatbot designed to help users understand common medical topics using clear and simple language.
+MediAssist AI is an AI-powered healthcare assistant built using FastAPI, GroqCloud with `llama-3.3-70b-versatile`, SQLite, and a modern web interface.
 
-The chatbot is intended for **educational and informational purposes only**. It is **not a replacement for a licensed healthcare professional** and must never provide a medical diagnosis or emergency treatment advice.
+The assistant helps users understand common medical topics in simple language while maintaining conversation history across multiple chat sessions.
 
-The assistant should always encourage users to consult a qualified doctor for serious, urgent, or persistent medical concerns.
-
----
-
-# Target Users
-
-* Patients looking for general health information
-* Students learning basic healthcare concepts
-* Individuals wanting simple explanations of medical terminology
-* Anyone seeking trustworthy educational healthcare guidance
+This project is intended for educational and portfolio purposes only and does not provide medical diagnosis or emergency healthcare advice.
 
 ---
 
-# Core Features
+## Disclaimer
 
-## 1. Healthcare Question Answering
+MediAssist AI is intended for educational and informational purposes only.
 
-Answer common healthcare questions in an easy-to-understand manner.
+It does not provide medical diagnosis, emergency assistance, or personalized treatment recommendations. Users should consult qualified healthcare professionals for medical advice.
+
+
+## Primary Goal
+
+Build a production-style AI chatbot that demonstrates:
+
+- FastAPI backend
+- GroqCloud API integration using `llama-3.3-70b-versatile`
+- SQLite persistence
+- Multi-conversation memory
+- Modern chat interface
+- REST API architecture
+
+---
+
+## Core Features
+
+### Health Questions
+
+Users can ask general healthcare questions.
 
 Examples:
 
-* What is diabetes?
-* What causes hypertension?
-* What is dengue fever?
-* What is asthma?
+- What is diabetes?
+- What causes high blood pressure?
+- What are the symptoms of dengue?
 
 ---
 
-## 2. Disease Explanation
+### Disease Explanations
 
-Explain diseases in plain English.
-
-Include when appropriate:
-
-* Definition
-* Causes
-* Symptoms
-* Risk factors
-* Prevention
-* General treatment overview
-
-Avoid unnecessary medical jargon.
-
----
-
-## 3. Medicine Information
-
-Provide general information about medicines.
-
-Examples:
-
-* Purpose of the medicine
-* Common uses
-* General precautions
-* Common side effects
-
-The chatbot must never recommend prescription medications or dosage changes.
-
----
-
-## 4. Healthy Lifestyle Guidance
-
-Provide evidence-based lifestyle recommendations, including:
-
-* Nutrition
-* Exercise
-* Sleep
-* Hydration
-* Stress management
-* Preventive healthcare habits
-
----
-
-## 5. Conversation Memory
-
-Each conversation should maintain its own context.
+Explain diseases using simple, non-technical language.
 
 Example:
 
-User:
-
-> What is diabetes?
-
-Later:
-
-> What foods should someone with it avoid?
-
-The chatbot should understand that "it" refers to diabetes.
-
-Different conversations must remain completely independent.
+Explain hypertension like I'm a beginner.
 
 ---
 
-## 6. Future Enhancement
+### Medicine Information
 
-Support medical document summarization.
+Provide general educational information about medicines.
 
 Examples:
 
-* Blood test reports
-* Lab reports
-* Discharge summaries
-* Medical prescriptions
+- What is Paracetamol used for?
+- What are common side effects of Ibuprofen?
 
-The chatbot should explain reports in simple language without making clinical diagnoses.
+The assistant must not prescribe medicines.
 
 ---
 
-# Tone and Communication Style
+### Healthy Lifestyle Advice
 
-The assistant should always be:
+Provide general wellness recommendations.
 
-* Professional
-* Friendly
-* Calm
-* Clear
-* Empathetic
-* Easy to understand
+Examples:
 
-Responses should prioritize clarity over technical complexity.
+- How can I sleep better?
+- Tips to reduce stress
+- Healthy eating habits
+- Exercise recommendations
 
 ---
 
-# Safety Guidelines
+### Conversation Memory
 
-The chatbot must:
+Each conversation remembers previous messages.
 
-* Never diagnose diseases.
-* Never replace a doctor.
-* Never prescribe medications.
-* Never recommend prescription dosages.
-* Never advise users to ignore professional medical care.
-* Clearly state when a healthcare professional should be consulted.
+Users can create multiple independent conversations.
 
-If a user describes symptoms suggesting a medical emergency (for example, chest pain, difficulty breathing, stroke symptoms, severe allergic reactions, or loss of consciousness), the chatbot should advise them to seek immediate emergency medical assistance.
+Each conversation maintains its own context.
 
 ---
 
-# AI Model
+## Future Enhancements
 
-Current AI Provider:
+The following features are intentionally excluded from Version 1 but may be added later:
 
-* Google Gemini API
-
-The application architecture should allow the AI provider to be replaced in the future without major code changes.
+- Medical report summarization (PDF upload)
+- OCR for laboratory reports
+- Retrieval-Augmented Generation (RAG)
+- Doctor recommendation system
+- Appointment scheduling
+- Voice conversation
+- Image analysis
+- Authentication
+- Cloud deployment
 
 ---
 
-# Long-Term Vision
+## Safety Requirements
 
-MediAssist AI aims to become a modern AI-powered healthcare assistant that provides:
+The assistant must:
 
-* Accurate educational healthcare information
-* Personalized conversation history
-* Medical report explanation
-* Secure multi-conversation management
-* A clean and responsive user interface
+- Never claim to be a doctor.
+- Never provide emergency medical advice.
+- Encourage users to consult qualified healthcare professionals for diagnosis or treatment.
+- Clearly state that responses are informational only.
 
-The project is intended as a portfolio-quality demonstration of enterprise software engineering practices using FastAPI, REST APIs, SQLite, and large language models.
+---
+
+## Example User Questions
+
+- What is diabetes?
+- Explain hypertension in simple words.
+- What are the symptoms of dengue?
+- What causes anemia?
+- How can I improve my sleep?
+- What are the benefits of walking every day?
+- Explain Vitamin D deficiency.
+
+---
+
+## Technology Stack
+
+Backend:
+- FastAPI
+
+Database:
+- SQLite
+
+AI Model:
+- GroqCloud API (`llama-3.3-70b-versatile`)
+
+Frontend:
+- HTML
+- CSS
+- JavaScript
+
+Version:
+- Portfolio Version 1

@@ -11,7 +11,7 @@ Business orchestration (app/services)
    |------------------|
 SQLite repositories  AI provider service (app/ai)
    |                  |
-SQLite database       Google Gemini REST API
+SQLite database       GroqCloud chat completions API
 ```
 
 ## Responsibilities
@@ -23,4 +23,4 @@ SQLite database       Google Gemini REST API
 - `app/ai`: provider integration and the MediAssist safety instruction.
 - `app/config.py`: environment-backed runtime configuration.
 
-The AI provider is isolated behind `GeminiService`, so another provider can be introduced without changing the API or database layers. Conversation memory is owned by the application: the selected conversation's stored messages are loaded and sent to the provider for each exchange.
+The AI provider is isolated behind `GroqService`, so another provider can be introduced without changing the API or database layers. Conversation memory is owned by the application: the selected conversation's stored messages are loaded and sent to the provider for each exchange.

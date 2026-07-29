@@ -10,9 +10,9 @@ python -m venv .venv
 python -m pip install -e ".[dev]"
 ```
 
-## Gemini requests fail
+## GroqCloud requests fail
 
-Confirm that `.env` exists and contains `GEMINI_API_KEY`. The key must not be placed in source files. Also verify `GEMINI_MODEL` names a model available to the configured API key.
+Confirm that `.env` exists and contains `GROQ_API_KEY`. The key must not be placed in source files. Also verify `GROQ_MODEL=llama-3.3-70b-versatile` is available to the configured Groq project.
 
 ## Database problems
 

@@ -12,8 +12,8 @@ class Settings(BaseSettings):
     app_env: str = "development"
     app_host: str = "127.0.0.1"
     app_port: int = 8000
-    gemini_api_key: str | None = None
-    gemini_model: str = "gemini-2.0-flash"
+    groq_api_key: str | None = None
+    groq_model: str = "llama-3.3-70b-versatile"
     database_path: str = "chatbot.db"
 
     model_config = SettingsConfigDict(

@@ -1,6 +1,6 @@
 """Business logic for sending messages through the configured AI provider."""
 
-from app.ai.gemini import GeminiService
+from app.ai.groq import GroqService
 from app.repositories.conversations import ConversationRepository
 from app.repositories.messages import MessageRepository
 
@@ -14,7 +14,7 @@ class ChatService:
         self,
         conversations: ConversationRepository,
         messages: MessageRepository,
-        ai: GeminiService,
+        ai: GroqService,
     ) -> None:
         self.conversations = conversations
         self.messages = messages

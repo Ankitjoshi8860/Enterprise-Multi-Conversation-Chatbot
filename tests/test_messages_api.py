@@ -1,11 +1,11 @@
 from fastapi.testclient import TestClient
 
-from app.ai.gemini import GeminiServiceError
+from app.ai.groq import GroqServiceError
 from app.config import get_settings
 from app.main import app
 
 
-class FakeGemini:
+class FakeGroq:
     def __init__(self, response="Educational response"):
         self.response = response
         self.histories = []
@@ -16,18 +16,18 @@ class FakeGemini:
         return self.response
 
 
-def client(tmp_path, fake_gemini):
+def client(tmp_path, fake_groq):
     get_settings.cache_clear()
     get_settings().database_path = str(tmp_path / "messages.sqlite3")
     app.dependency_overrides.clear()
-    from app.api.dependencies_ai import get_gemini_service
+    from app.api.dependencies_ai import get_groq_service
 
-    app.dependency_overrides[get_gemini_service] = lambda: fake_gemini
+    app.dependency_overrides[get_groq_service] = lambda: fake_groq
     return TestClient(app)
 
 
 def test_send_message_persists_exchange_and_selected_history(tmp_path) -> None:
-    fake = FakeGemini()
+    fake = FakeGroq()
     api = client(tmp_path, fake)
     first = api.post("/conversations", json={"title": "Diabetes education"}).json()
     second = api.post("/conversations", json={"title": "Asthma education"}).json()
@@ -53,7 +53,7 @@ def test_send_message_persists_exchange_and_selected_history(tmp_path) -> None:
 
 
 def test_send_message_validates_missing_and_empty_requests(tmp_path) -> None:
-    fake = FakeGemini()
+    fake = FakeGroq()
     api = client(tmp_path, fake)
     assert api.post("/conversations/999/messages", json={"content": "Hello"}).status_code == 404
     conversation = api.post("/conversations", json={"title": "Test"}).json()
@@ -64,12 +64,12 @@ def test_send_message_validates_missing_and_empty_requests(tmp_path) -> None:
     app.dependency_overrides.clear()
 
 
-def test_gemini_failure_does_not_create_assistant_message(tmp_path) -> None:
-    class FailingGemini:
+def test_groq_failure_does_not_create_assistant_message(tmp_path) -> None:
+    class FailingGroq:
         def generate(self, messages):
-            raise GeminiServiceError("provider unavailable")
+            raise GroqServiceError("provider unavailable")
 
-    fake = FailingGemini()
+    fake = FailingGroq()
     api = client(tmp_path, fake)
     conversation = api.post("/conversations", json={"title": "Test"}).json()
     response = api.post(

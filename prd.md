@@ -2,11 +2,11 @@
 
 ## 1. Project Overview
 
-Build an enterprise-grade AI chatbot that supports multiple independent conversations using the Google Gemini API.
+Build an enterprise-grade AI chatbot that supports multiple independent conversations using the GroqCloud API and `llama-3.3-70b-versatile`.
 
 The chatbot should allow users to create, manage, and continue multiple conversations while maintaining separate conversation history for each chat session.
 
-The application will manage conversation memory. Gemini will only generate responses based on the conversation history sent by the application.
+The application will manage conversation memory. GroqCloud will only generate responses based on the conversation history sent by the application.
 
 This project should demonstrate good software engineering practices, modular architecture, and clean code.
 
@@ -19,7 +19,7 @@ The primary objectives are:
 * Build a modern AI chatbot.
 * Support multiple conversations.
 * Store conversation history in a database.
-* Integrate with the Google Gemini API.
+* Integrate with the GroqCloud API.
 * Build a clean and responsive web interface.
 * Follow production-style architecture.
 * Make the project easy to extend in the future.
@@ -45,7 +45,7 @@ Database
 
 AI Model
 
-* Google Gemini API
+* GroqCloud API (`llama-3.3-70b-versatile`)
 
 Development Tools
 
@@ -91,7 +91,7 @@ The application shall:
 
 * Load previous messages for the selected conversation.
 * Append new user messages.
-* Send the complete conversation history to Gemini.
+* Send the complete conversation history to GroqCloud.
 * Store AI responses after every interaction.
 
 Conversation memory will be managed by the application.
@@ -173,16 +173,16 @@ The backend shall expose REST APIs for:
 
 # 7. AI Integration
 
-The chatbot shall integrate with the Google Gemini API.
+The chatbot shall integrate with the GroqCloud API.
 
 The application shall:
 
 * Build the prompt from stored conversation history.
-* Send the prompt to Gemini.
+* Send the prompt to GroqCloud using `llama-3.3-70b-versatile`.
 * Receive the response.
 * Save the response.
 
-The Gemini API key must **not** be hardcoded.
+The Groq API key must **not** be hardcoded.
 
 The application shall read the API key from an environment variable.
 
@@ -195,7 +195,7 @@ The application should handle:
 * Invalid requests
 * Database errors
 * Missing conversations
-* Gemini API failures
+* GroqCloud API failures
 * Network failures
 * Empty user messages
 
@@ -238,7 +238,7 @@ Each layer should have a single responsibility.
 
 The application shall:
 
-* Never expose the Gemini API key.
+* Never expose the Groq API key.
 * Read configuration from environment variables.
 * Prevent accidental API key commits.
 * Ignore sensitive files using `.gitignore`.
@@ -251,7 +251,7 @@ The application shall:
 
 - Multi-conversation chatbot
 - SQLite database
-- Google Gemini API integration
+- GroqCloud API integration using `llama-3.3-70b-versatile`
 - Responsive web interface
 - Conversation history
 - Rename/Delete conversations
@@ -299,7 +299,7 @@ The project will be considered complete when:
 * Users can create multiple conversations.
 * Each conversation maintains its own history.
 * Messages are stored in SQLite.
-* Responses are generated using the Gemini API.
+* Responses are generated using the GroqCloud API.
 * The application has a clean user interface.
 * The architecture is modular and maintainable.
 * The project is suitable as a portfolio-quality demonstration of an enterprise AI chatbot.
