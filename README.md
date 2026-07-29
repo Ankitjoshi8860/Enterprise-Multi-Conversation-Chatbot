@@ -20,6 +20,10 @@ Gemini uses the REST `generateContent` endpoint. Configure `GEMINI_API_KEY` and 
 
 MediAssist AI provides educational healthcare information only. It must not diagnose conditions, prescribe medicines, recommend dosage changes, or replace professional care. Possible emergency symptoms are directed to immediate emergency medical assistance.
 
+## Security and error handling
+
+Never commit `.env`, API keys, local databases, or logs. `.env.example` contains placeholders only. The API reads `GEMINI_API_KEY` from the environment and never includes it in responses or error messages. Validation, database, provider, and unexpected failures return safe user-facing messages while detailed diagnostics remain in server logs.
+
 SQLite is stored at the path configured by `DATABASE_PATH` and is initialized automatically when the persistence layer is used. Local database files are ignored by Git.
 
 ## Run the API

@@ -8,6 +8,7 @@ from pathlib import Path
 from app.api.routes.health import router as health_router
 from app.api.routes.conversations import router as conversations_router
 from app.api.routes.messages import router as messages_router
+from app.api.errors import register_error_handlers
 from app.config import get_settings
 
 
@@ -19,6 +20,7 @@ def create_app() -> FastAPI:
     application.include_router(health_router)
     application.include_router(conversations_router)
     application.include_router(messages_router)
+    register_error_handlers(application)
     static_directory = Path(__file__).parent / "static"
     application.mount("/static", StaticFiles(directory=static_directory), name="static")
 
