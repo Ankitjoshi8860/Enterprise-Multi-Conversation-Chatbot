@@ -20,7 +20,7 @@ def client(tmp_path, fake_gemini):
     get_settings.cache_clear()
     get_settings().database_path = str(tmp_path / "messages.sqlite3")
     app.dependency_overrides.clear()
-    from app.api.dependencies import get_gemini_service
+    from app.api.dependencies_ai import get_gemini_service
 
     app.dependency_overrides[get_gemini_service] = lambda: fake_gemini
     return TestClient(app)

@@ -3,8 +3,9 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 
 from app.ai.gemini import GeminiService, GeminiServiceError
-from app.api.dependencies import get_conversation_repository, get_gemini_service
+from app.api.dependencies import get_conversation_repository
 from app.api.dependencies import get_message_repository
+from app.api.dependencies_ai import get_gemini_service
 from app.api.schemas import ChatResponse, MessageCreate
 from app.repositories.conversations import ConversationRepository
 from app.repositories.messages import MessageRepository
