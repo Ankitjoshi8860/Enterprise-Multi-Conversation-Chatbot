@@ -30,7 +30,7 @@ uvicorn app.main:app --reload
 
 The API is available at `http://127.0.0.1:8000`. OpenAPI documentation is available at `/docs`, and the health check is available at `/health`.
 
-Conversation management endpoints are available under `/conversations`: `POST` and `GET` for create/list, `GET /conversations/{id}` for history, `PATCH /conversations/{id}` for rename, and `DELETE /conversations/{id}` for removal.
+Conversation management endpoints are available under `/conversations`: `POST` and `GET` for create/list, `GET /conversations/{id}` for history, `PATCH /conversations/{id}` for rename, and `DELETE /conversations/{id}` for removal. Send a message with `POST /conversations/{id}/messages` and a JSON body such as `{ "content": "What is diabetes?" }`.
 
 ## Test
 

@@ -37,6 +37,23 @@ class MessageResponse(BaseModel):
     timestamp: datetime
 
 
+class MessageCreate(BaseModel):
+    content: str = Field(min_length=1, max_length=20_000)
+
+    @field_validator("content")
+    @classmethod
+    def content_must_not_be_blank(cls, value: str) -> str:
+        value = value.strip()
+        if not value:
+            raise ValueError("message content must not be blank")
+        return value
+
+
+class ChatResponse(BaseModel):
+    user_message: MessageResponse
+    assistant_message: MessageResponse
+
+
 class ConversationResponse(BaseModel):
     id: int
     title: str
