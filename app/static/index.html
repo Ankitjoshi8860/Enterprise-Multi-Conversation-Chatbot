@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="MediAssist AI healthcare education chatbot" />
+    <title>MediAssist AI</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Conversation history">
+        <div class="brand"><span class="brand-mark">+</span><span>MediAssist AI</span></div>
+        <button id="new-chat" class="new-chat" type="button">+ New conversation</button>
+        <div id="conversation-list" class="conversation-list" aria-live="polite"></div>
+      </aside>
+
+      <main class="chat-panel">
+        <header class="chat-header">
+          <button id="menu-toggle" class="icon-button menu-toggle" type="button" aria-label="Open conversations">☰</button>
+          <div>
+            <p class="eyebrow">Healthcare education</p>
+            <h1 id="conversation-title">New conversation</h1>
+          </div>
+          <button id="rename-chat" class="secondary-button" type="button" disabled>Rename</button>
+        </header>
+
+        <section id="message-list" class="message-list" aria-live="polite">
+          <div id="empty-state" class="empty-state">
+            <div class="empty-icon">✦</div>
+            <h2>How can I help you today?</h2>
+            <p>Ask about common health topics in simple language. MediAssist AI provides educational information, not a diagnosis.</p>
+          </div>
+        </section>
+
+        <form id="message-form" class="composer">
+          <label class="sr-only" for="message-input">Your health question</label>
+          <textarea id="message-input" rows="1" maxlength="20000" placeholder="Ask a health question..." required></textarea>
+          <button id="send-button" class="send-button" type="submit" aria-label="Send message">↑</button>
+          <p class="composer-note">For education only. Seek immediate medical help for emergencies.</p>
+        </form>
+      </main>
+    </div>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script src="/static/app.js"></script>
+  </body>
+</html>
