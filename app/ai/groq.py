@@ -1,10 +1,13 @@
 """GroqCloud provider integration using its OpenAI-compatible API."""
 
 from typing import Any, Iterable
+import logging
 
 import httpx
 
 from app.ai.policy import MEDIASSIST_SYSTEM_INSTRUCTION
+
+logger = logging.getLogger(__name__)
 
 
 class GroqServiceError(RuntimeError):
@@ -60,6 +63,10 @@ class GroqService:
             response.raise_for_status()
             data = response.json()
         except (httpx.HTTPError, ValueError) as exc:
+            if isinstance(exc, httpx.HTTPStatusError):
+                logger.error("Groq request failed with HTTP %s: %s", exc.response.status_code, exc.response.text[:500])
+            else:
+                logger.error("Groq request failed: %s", exc)
             raise GroqServiceError("Groq request failed") from exc
         finally:
             if should_close:

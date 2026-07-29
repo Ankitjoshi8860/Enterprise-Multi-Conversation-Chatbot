@@ -6,6 +6,7 @@ import sqlite3
 from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
+from fastapi.encoders import jsonable_encoder
 
 logger = logging.getLogger(__name__)
 
@@ -17,7 +18,10 @@ def register_error_handlers(application: FastAPI) -> None:
     ) -> JSONResponse:
         return JSONResponse(
             status_code=422,
-            content={"detail": "Request validation failed", "errors": exc.errors()},
+            content={
+                "detail": "Request validation failed",
+                "errors": jsonable_encoder(exc.errors()),
+            },
         )
 
     @application.exception_handler(sqlite3.Error)

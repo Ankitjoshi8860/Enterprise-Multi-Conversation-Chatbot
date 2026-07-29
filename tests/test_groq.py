@@ -1,5 +1,6 @@
 import httpx
 import pytest
+import json
 
 from app.ai.groq import GroqService, GroqServiceError
 
@@ -27,7 +28,7 @@ def test_generate_sends_safety_policy_and_normalizes_response() -> None:
     service = GroqService("test-key", "llama-3.3-70b-versatile", client=client)
     assert service.generate([{"role": "user", "content": "Hello"}]) == "Hello back"
     assert requests[0].headers["authorization"] == "Bearer test-key"
-    body = requests[0].json()
+    body = json.loads(requests[0].content)
     assert body["model"] == "llama-3.3-70b-versatile"
     assert body["messages"][1] == {"role": "user", "content": "Hello"}
     assert "Never diagnose conditions" in body["messages"][0]["content"]
