@@ -7,6 +7,23 @@
     <title>MediAssist AI</title>
     <link rel="icon" type="image/svg+xml" href="/static/favicon.svg" />
     <link rel="stylesheet" href="/static/styles.css" />
+    <style>
+      .sidebar { overflow: hidden; }
+      .conversation-list { width: 100%; min-width: 0; overflow: hidden; }
+      .conversation-item { width: 100%; min-width: 0; overflow: visible; }
+      .conversation-name { min-width: 0; }
+      .conversation-name::before { content: ""; display: inline-block; width: 10px; height: 7px; margin-right: 12px; border: 1px solid var(--muted); border-radius: 1px; vertical-align: 1px; }
+      .conversation-menu-button { flex: 0 0 25px; margin-left: auto; }
+      .sidebar-support { margin-top: 32px; }
+      .app-shell { min-height: 100vh; }
+      .sidebar { position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+      .conversation-list { flex: 1 1 auto; overflow-y: auto; overflow-x: hidden; min-height: 0; padding-bottom: 12px; }
+      .sidebar-support { flex: 0 0 auto; }
+      .settings-button { flex: 0 0 auto; }
+      .composer { padding-top: 18px; padding-bottom: 18px; }
+      .composer textarea { min-height: 60px; padding: 17px 72px 15px 20px; border-radius: 18px; }
+      .send-button { bottom: 49px; width: 42px; height: 42px; font-size: 1.1rem; }
+    </style>
   </head>
   <body>
     <div class="app-shell">
@@ -51,5 +68,13 @@
     </div>
     <div id="toast" class="toast" role="status" aria-live="polite"></div>
     <script src="/static/app.js"></script>
+    <script>
+      document.getElementById("message-input").addEventListener("keydown", (event) => {
+        if (event.key === "Enter" && !event.shiftKey) {
+          event.preventDefault();
+          document.getElementById("message-form").requestSubmit();
+        }
+      });
+    </script>
   </body>
 </html>
